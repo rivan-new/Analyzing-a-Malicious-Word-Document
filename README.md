@@ -30,7 +30,10 @@ A comprehensive hands-on static analysis lab focusing on dissecting a suspicious
 
 2. **Static Analysis & Macro Extraction:**
    * Ran `oleid` to check for suspicious indicators (such as VBA macros, embedded objects, or auto-execution triggers).
+   * <img width="975" height="483" alt="image" src="https://github.com/user-attachments/assets/fac741ec-d164-44b4-9fa0-980be9076165" />
+
    * Used `olevba` to extract and inspect Visual Basic for Applications (VBA) source code embedded within the document.
+   * <img width="975" height="655" alt="image" src="https://github.com/user-attachments/assets/b7e6d778-1fd3-4d30-9518-5222ab72f391" />
 
 3. **Deobfuscation & IOC Extraction:**
    * Examined obfuscated strings and concatenated variables inside the macro code.
