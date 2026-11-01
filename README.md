@@ -126,7 +126,6 @@ This showed me how a simple Word document can be used to start a much larger att
 During the investigation, I identified the following indicators:
 
 | Indicator | Value |
-| :--- | :--- |
 | **File Extension** | `.docm` |
 | **Macro Function** | `AutoOpen` |
 | **Main Function** | `ExecutePayload` |
