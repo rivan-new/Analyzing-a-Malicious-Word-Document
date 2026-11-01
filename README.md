@@ -144,39 +144,22 @@ Fourth: Running the Downloaded File
 Finally, the code uses:
 
 WScript.Shell
-
 to launch:
-
 mshta.exe
-
 This Windows utility can be used to run HTA files.
-
 The parameters 0, False indicate an attempt to run the process without showing a window or waiting for it to finish.
-
 4. Understanding the Attack
-
 After reviewing the code, I was able to understand the intended attack sequence:
-
-The victim receives a suspicious Word document.
-
-The victim opens the document and enables macros.
-
-The AutoOpen function starts.
-
-The macro retrieves a hidden download URL.
-
-It connects to the remote server.
-
-It downloads an HTA file.
-
-It attempts to run the file using mshta.exe.
-
+ - The victim receives a suspicious Word document.
+ - The victim opens the document and enables macros.
+ - The AutoOpen function starts.
+ - The macro retrieves a hidden download URL.
+ - It connects to the remote server.
+ - It downloads an HTA file.
+ - It attempts to run the file using mshta.exe.
 This showed me how a simple Word document can be used to start a much larger attack.
-
 5. MITRE ATT&CK Mapping
-
 I mapped the behaviors found in the code to the MITRE ATT&CK framework.
-
 Technique ID         Technique          Description
 
 T1204.002         Malicious File        Using a malicious document
