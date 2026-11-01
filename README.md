@@ -90,13 +90,13 @@ I started with oleid to get some basic information about the document.
 The results showed:
 <img width="975" height="483" alt="image" src="https://github.com/user-attachments/assets/9a656eab-61ef-4b8b-84d9-b37dd55a8db0" />
 
-The file was a Macro-Enabled Word Document.
+- The file was a Macro-Enabled Word Document.
 
-The document was not encrypted.
+- The document was not encrypted.
 
-VBA macros were present.
+- VBA macros were present.
 
-The macro indicator showed HIGH risk.
+- The macro indicator showed HIGH risk.
 
 This was a reason to investigate the file further, but it was not enough on its own to confirm that the document was malicious.
 
@@ -104,7 +104,6 @@ This was a reason to investigate the file further, but it was not enough on its 
 
 Next, I used olevba to extract the VBA code from the document.
 <img width="975" height="655" alt="image" src="https://github.com/user-attachments/assets/cceab8de-1eef-4735-8f8c-941a722655e8" />
-
 
 While reviewing the code, I found several suspicious actions.
 
@@ -178,35 +177,15 @@ This showed me how a simple Word document can be used to start a much larger att
 
 I mapped the behaviors found in the code to the MITRE ATT&CK framework.
 
-Technique ID
+Technique ID         Technique          Description
 
-Technique
+T1204.002         Malicious File        Using a malicious document
 
-Description
+T1059.005         Visual Basic           Executing VBA code
 
-T1204.002
+T1105         Ingress Tool Transfer     Downloading an external file
 
-Malicious File
-
-Using a malicious document
-
-T1059.005
-
-Visual Basic
-
-Executing VBA code
-
-T1105
-
-Ingress Tool Transfer
-
-Downloading an external file
-
-T1218.005
-
-Mshta
-
-Using mshta.exe to run an HTA file
+T1218.005          Mshta                Using mshta.exe to run an HTA file
 
 These techniques are based on the code analysis, not on a live attack observation.
 
@@ -214,41 +193,16 @@ These techniques are based on the code analysis, not on a live attack observatio
 
 During the investigation, I identified the following indicators:
 
-Indicator
+Indicator                          Value
 
-Value
-
-File Extension
-
-.docm
-
-Macro Function
-
-AutoOpen
-
-Main Function
-
-ExecutePayload
-
-HTTP Component
-
-MSXML2.XMLHTTP
-
-Download Folder
-
-%TEMP%
-
-Downloaded File
-
-.hta
-
-Execution Tool
-
-mshta.exe
-
-Script Object
-
-WScript.Shell
+File Extension                     .docm
+Macro Function                    AutoOpen
+Main Function                  ExecutePayload
+HTTP Component                 MSXML2.XMLHTTP
+Download Folder                   %TEMP%
+Downloaded File                      .hta
+Execution Tool                    mshta.exe
+Script Object                    WScript.Shell
 
 File Hashes:
 
@@ -268,13 +222,13 @@ Some useful things to monitor include:
 
 Look for suspicious activity such as:
 
-WINWORD.EXE → mshta.exe
+- WINWORD.EXE → mshta.exe
 
 Useful Windows events:
 
-Sysmon Event ID 1 – Process Creation.
+- Sysmon Event ID 1 – Process Creation.
 
-Security Event ID 4688 – Process Creation.
+- Security Event ID 4688 – Process Creation.
 
 2. Network Connections
 
@@ -282,13 +236,13 @@ Monitor unusual outbound connections from Office applications or related process
 
 Useful sources:
 
-Sysmon Event ID 3.
+- Sysmon Event ID 3.
 
-Firewall Logs.
+- Firewall Logs.
 
-Proxy Logs.
+- Proxy Logs.
 
-Microsoft Defender telemetry.
+- Microsoft Defender telemetry.
 
 3. File Creation
 
@@ -312,29 +266,18 @@ The most important lesson was that analyzing a suspicious file is not just about
 
 9. Tools Used
 
-Kali Linux
+- Kali Linux
 
-VirtualBox
+- VirtualBox
 
-oleid
+- oleid
 
-olevba
+- olevba
 
-Abuse.ch
+- Abuse.ch
 
-MITRE ATT&CK
+- MITRE ATT&CK
 
-10. Analysis Limitations
-
-Static analysis only.
-
-The Word document was not opened.
-
-VBA macros were not executed.
-
-The downloaded payload was not executed.
-
-No live network activity was tested.
 
 Disclaimer
 
